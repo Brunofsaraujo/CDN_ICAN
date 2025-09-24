@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.neural_network import MLPClassifier
 
 #%% CARGA DOS DADOS
-df_jogar = pd.read_csv('jogarTenis.csv')
+df_jogar = pd.read_csv(r'C:\Pessoas\Bruno.Araujo\CDN_ICAN\Codigos\2 - redes neurais\jogarTenis.csv')
 print('Tabela de dados:\n', df_jogar)
 input('Aperte uma tecla para continuar: \n')
 

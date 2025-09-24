@@ -75,7 +75,7 @@ print(clientes_atacadistas.variables)
 mlp = MLPClassifier(verbose=True, 
                     max_iter=10000, 
                     tol=1e-6,
-                    hidden_layer_sizes = 50, 
+                    hidden_layer_sizes = 150, 
                     activation='logistic')
 
 #%% TREINAMENTO DA REDE

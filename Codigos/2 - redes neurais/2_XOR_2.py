@@ -49,4 +49,3 @@ print("N de camadas = ", mlp.n_layers_)    # número de camadas da rede
 print("Tamanhos das camadas ocultas: ", mlp.hidden_layer_sizes)
 print("N de neurons saida = ", mlp.n_outputs_)   # número de neurons de saida
 print("F de ativação = ", mlp.out_activation_)  # função de ativação utilizada
-
