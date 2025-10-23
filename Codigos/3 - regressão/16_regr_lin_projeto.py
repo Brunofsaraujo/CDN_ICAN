@@ -40,25 +40,26 @@ Possui informações do cliente, como Email, Endereço e sua cor Avatar. Em segu
 
 """
 #%% SE GOOGLE COLAB
-from google.colab import files
+# from google.colab import files
 
-# Subir o arquivo CSV
-uploaded = files.upload()   # sobe o arquivo de modo interativo
+# # Subir o arquivo CSV
+# uploaded = files.upload()   # sobe o arquivo de modo interativo
 
-# Verificar se o arquivo foi subido com sucesso
-if uploaded:
-  print("Arquivo subido com sucesso!")
-else:
-  print("Erro ao subir o arquivo.")
+# # Verificar se o arquivo foi subido com sucesso
+# if uploaded:
+#   print("Arquivo subido com sucesso!")
+# else:
+#   print("Erro ao subir o arquivo.")
 
 #%% SE ARQUIVO LOCAL 
 
-customers = pd.read_csv("Ecommerce Customers")
+url = r"C:\\Pessoas\\Bruno.Araujo\\CDN_ICAN\\Codigos\\3 - regressão\\Ecommerce Customers.csv"
+customers = pd.read_csv(url)
 customers.head()
 customers.describe()
 customers.info()
 
-##%% Análise de dados exploratória
+#%% Análise de dados exploratória
 
 sns.set_palette("Grays_r")  # cinzas reverso
 sns.set_style('whitegrid')
@@ -105,12 +106,12 @@ plt.ylabel('Y previsto')
 
 #%% Avaliando o Modelo
 from sklearn import metrics
-print('MAE:', metrics.mean_absolute_error(y_test, predictions))
-print('MSE:', metrics.mean_squared_error(y_test, predictions))
-print('RMSE:', np.sqrt(metrics.mean_squared_error(y_test, predictions)))
+print('MAE:', metrics.mean_absolute_error(y_test, prev))
+print('MSE:', metrics.mean_squared_error(y_test, prev))
+print('RMSE:', np.sqrt(metrics.mean_squared_error(y_test, prev)))
 
 #%% Resíduos
-sns.distplot((y_test-predictions),bins=50);
+sns.distplot((y_test-prev),bins=50);
 
 #%% Conclusão
 """

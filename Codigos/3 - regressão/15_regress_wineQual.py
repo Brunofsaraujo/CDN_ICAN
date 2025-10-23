@@ -31,10 +31,10 @@ X_test = scaler.transform(X_test)
 #%% Construir e treinar a rede neural com MLPRegressor
 # A definição do modelo e o treinamento são feitos de forma mais direta
 model = MLPRegressor(
-    hidden_layer_sizes=(64,),      # Uma camada oculta com 64 neurônios
+    hidden_layer_sizes=(256,),      # Uma camada oculta com 64 neurônios
     activation='relu',             # Usando 'relu' que é mais comum e performático que 'sigmoid'
     solver='adam',
-    max_iter=50,                   # Equivalente a 'epochs'
+    max_iter=300,                   # Equivalente a 'epochs'
     batch_size=32,
     verbose=True,
     random_state=42,
