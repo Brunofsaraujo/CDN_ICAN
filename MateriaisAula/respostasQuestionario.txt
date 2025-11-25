@@ -1,0 +1,43 @@
+Questionario preparatorio - IA e Machine Learning
+
+1. Aprendizado de maquinas: area da IA que cria algoritmos que ajustam parametros a partir de dados para generalizar para novos exemplos.
+2. Conceitos:
+   a) Classificacao: prever rotulos/categorias discretas.
+   b) Regressao: prever valores numericos continuos.
+   c) Acuracia: proporcao de acertos sobre o total avaliado.
+   d) Erro/perda: medida do desvio entre previsao e alvo (ex.: loss, MSE).
+   e) Predicao: uso do modelo treinado para estimar a saida de novos dados.
+   f) Modelo: conjunto de regras/parametros ajustados no treino.
+   g) Features: atributos que descrevem cada exemplo de entrada.
+3. ML e um subconjunto da IA, focado em metodos estatisticos/numericos que aprendem padroes com dados.
+4. Comparacao modelo vs conceito real: (i) modelo igual ao conceito; (ii) modelo mais geral (aceita fora do conceito); (iii) modelo mais especifico (rejeita casos do conceito); (iv) modelo inconsistente (erros de ambos os tipos).
+5. Contraexemplos mostram falhas do modelo e orientam ajustes para melhorar a generalizacao.
+6. Aprendizado supervisionado: treino com pares entrada-saida rotulados (ex.: play_tennis em Codigos/2 - redes neurais/5_jogar_tenis.py).
+7. Nao supervisionado: nao ha rotulos; o algoritmo busca estrutura/padroes (ex.: k-means em Codigos/4 - Aprend n superv/iris_kmeans_2.py).
+8. Metodos fit/predict (scikit-learn): fit ajusta o modelo aos dados; predict aplica o modelo treinado para gerar previsoes.
+9. Dados numericos: quantitativos; costumam ser padronizados/normalizados. Dados categoricos: qualitativos; devem ser codificados (OneHotEncoder, LabelEncoder) antes de treinar classificadores.
+10. Separar treino/teste (ex.: 6_wineQual_UCI_.py) mede generalizacao em dados nao vistos e evita avaliacao otimista.
+11. MLP/densa: camada de entrada (1 neuronio por feature) -> uma ou mais camadas ocultas totalmente conectadas -> camada de saida (neuronios de classe ou valor continuo).
+12. Funcao de ativacao aplica nao linearidade ao somatorio do neuronio. Usuais: ReLU, sigmoid/logistic, tanh, softmax.
+13. Neuronio artificial: entradas xi com pesos wi, soma com vies b, aplica f(S wi xi + b), produz saida/score.
+14. OneHot para [pleno, feminino, pos-pago, alto], com categorias de OneHotEncoder: Ocupacao [junior, pleno, senior], Genero [Feminino, Masculino], Plano [Pos-pago, Pre-pago], Uso [Alto, Baixo, Medio]. Vetor: [0,1,0, 1,0, 1,0, 1,0,0].
+15. OneHotEncoder cria um bit por categoria (para features). LabelEncoder gera um inteiro por categoria (mais adequado a rotulos). Na tabela: Ocupacao {junior:0, pleno:1, senior:2}; Genero {Feminino:0, Masculino:1}; Plano {Pos-pago:0, Pre-pago:1}; Uso {Alto:0, Baixo:1, Medio:2}. O registro codificado com LabelEncoder vira [1,0,0,0] se cada coluna for transformada separadamente.
+16. Matriz de confusao: tabela real vs previsto. Ex. 3 classes:
+   Real/Prev | A  B  C
+   A         | 8  1  0
+   B         | 2 10  1
+   C         | 0  3  9
+17. Rede treinada quando a perda converge abaixo de tol ou estabiliza e metricas de treino/validacao ficam adequadas (MLPClassifier em 5_jogar_tenis.py e 6_wineQual_UCI_.py para quando atinge tol ou max_iter).
+18. Backpropagation calcula gradientes da perda e ajusta pesos; e o passo central do aprendizado em redes.
+19. Redes feedforward/MLP, CNNs, RNNs/LSTMs e variantes treinadas por gradiente usam backprop (e BPTT nas recorrentes).
+20. Overfitting: modelo memoriza treino e piora em teste. Underfitting: modelo simples, erra em treino e teste. Generalizacao: manter boa performance em dados nao vistos.
+21. Quando acuracia de treino sobe e de teste cai, o problema e overfitting.
+22. Epoca: uma passagem completa pelo conjunto de treino. Lote/batch: subconjunto usado em um passo de atualizacao.
+23. Regressao linear: relacao linear y=ax+b. Regressao nao linear: relacao nao linear (polinomios, redes, arvores). Regressao linear multipla: varias variaveis independentes compondo y linearmente.
+24. Coeficiente de correlacao mede forca/direcao da relacao linear; casos: positiva (~1), negativa (~-1), nula (~0).
+25. Em 5_jogar_tenis.py: X = df_jogar.loc[:, 'Aparencia':'Vento'] seleciona as colunas Aparencia ate Vento como matriz de features.
+26. No mesmo programa: X = encoder.fit_transform(df_jogar.loc[:, 'Aparencia':'Vento']) ajusta o OneHotEncoder e converte as colunas categoricas em vetores binarios.
+27. Em 15_regress_wineQual.py: StandardScaler().fit_transform(X_train) e .transform(X_test) padronizam (media 0, desvio 1) para evitar que escalas diferentes dominem o treino.
+28. Em 6_wineQual_UCI_.py: entradas = 11 (n_features_in_), camadas ocultas (100,25), saida com 1 neuronio por classe de qualidade; n_layers_ = 4 contando entrada e saida.
+29. Script de RandomForest (pergunta): classificador RandomForestClassifier com one-hot. Previsoes esperadas: (Verde, Circulo) -> classe A; (Verde, Quadrado) -> classe B (usando o mesmo encoder dos dados originais).
+30. Trecho do WineQualUCI: x_prev e um vetor de 11 medicoes de um vinho. a) Classificacao (MLPClassifier): predict retorna a classe de qualidade prevista; classe_prev escolhe a classe com maior probabilidade. b) Regressao (MLPRegressor): predict retorna um valor continuo estimado de qualidade para esse vetor.
